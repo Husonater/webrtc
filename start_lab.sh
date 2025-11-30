@@ -57,9 +57,8 @@ elif python3 -c "import websockets" 2>/dev/null; then
     SIGNALING_SERVER="signaling_server.py"
 else
     echo -e "${YELLOW}⚠️  Keine WebSocket-Module gefunden${NC}"
-    echo -e "${YELLOW}   Verwende vereinfachte Version (eingeschränkte Funktionalität)${NC}"
-    echo -e "${YELLOW}   Für volle Funktionalität: sudo apt install python3-aiohttp${NC}"
-    SIGNALING_SERVER="signaling_server_simple.py"
+    echo -e "${YELLOW}   Verwende Standard-Library Version (Voll funktionsfähig)${NC}"
+    SIGNALING_SERVER="signaling_server_stdlib.py"
 fi
 
 echo ""

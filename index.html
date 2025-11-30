@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Security Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔒 WebRTC Security Lab</h1>
+            <p class="subtitle">Demonstration von WebRTC-Sicherheitsrisiken</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <h2>Verbindungssteuerung</h2>
+                <div class="button-group">
+                    <button id="connectBtn" class="btn btn-primary">🔌 Mit Server verbinden</button>
+                    <button id="startCallBtn" class="btn btn-success" disabled>📞 Anruf starten</button>
+                    <button id="hangupBtn" class="btn btn-danger" disabled>📴 Auflegen</button>
+                </div>
+                <div class="status-bar">
+                    <span class="status-label">Status:</span>
+                    <span id="connectionStatus" class="status disconnected">Getrennt</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h2>Sicherheitseinstellungen</h2>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="enableMdns" checked>
+                        <span>mDNS aktivieren (IP-Verschleierung)</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="privacyBadger">
+                        <span>Privacy Badger simulieren</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="encryptedSignaling">
+                        <span>TLS für Signalisierung (wss://)</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="video-section">
+                <div class="video-container">
+                    <video id="localVideo" autoplay muted playsinline></video>
+                    <div class="video-label">Lokales Video</div>
+                </div>
+                <div class="video-container">
+                    <video id="remoteVideo" autoplay playsinline></video>
+                    <div class="video-label">Remote Video</div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-panel">
+                    <h3>🌐 ICE-Kandidaten</h3>
+                    <div id="iceCandidates" class="log-area"></div>
+                </div>
+
+                <div class="info-panel">
+                    <h3>⚠️ Sicherheitswarnungen</h3>
+                    <div id="securityWarnings" class="log-area warnings"></div>
+                </div>
+
+                <div class="info-panel">
+                    <h3>📡 Signalisierungsnachrichten</h3>
+                    <div id="signalingLog" class="log-area"></div>
+                </div>
+
+                <div class="info-panel">
+                    <h3>📊 Verbindungsstatistiken</h3>
+                    <div id="stats" class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Verbindungstyp:</span>
+                            <span id="connType" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Lokale IP:</span>
+                            <span id="localIp" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Remote IP:</span>
+                            <span id="remoteIp" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Verschlüsselung:</span>
+                            <span id="encryption" class="stat-value">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>⚠️ Diese Anwendung demonstriert absichtlich Sicherheitsrisiken zu Bildungszwecken</p>
+                <div class="legend">
+                    <span class="legend-item"><span class="badge host">Host</span> Lokale IP</span>
+                    <span class="legend-item"><span class="badge srflx">srflx</span> Öffentliche IP (STUN)</span>
+                    <span class="legend-item"><span class="badge relay">relay</span> TURN-Server</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

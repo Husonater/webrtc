@@ -35,11 +35,11 @@ sequenceDiagram
     Sig->>Bob: Leite Candidates weiter
 
     Note over Alice, Bob: 3. P2P Verbindung (DTLS-SRTP)
-    Alice<-->>Bob: Direkter Medienfluss (Audio/Video)
+    Alice->>Bob: Direkter Medienfluss (Audio/Video)
     
     Note over Alice, Bob: Falls P2P blockiert (Symmetrisches NAT/Firewall):
-    Alice<-->>TURN: Medien Relay
-    TURN<-->>Bob: Medien Relay
+    Alice->>TURN: Medien Relay
+    TURN->>Bob: Medien Relay
 ```
 
 ### Begriffserklärungen
@@ -173,9 +173,7 @@ Um WebRTC in Unternehmen sicher zu nutzen und unkontrollierten Datenabfluss zu v
 
 ## Quellenverzeichnis
 
-1.  
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-**RFC 5245:** Interactive Connectivity Establishment (ICE)
+1. **RFC 5245:** Interactive Connectivity Establishment (ICE)
 2.  **RFC 5389:** Session Traversal Utilities for NAT (STUN)
 3.  **RFC 5766:** Traversal Using Relays around NAT (TURN)
 4.  **RFC 8826:** Security Considerations for WebRTC
